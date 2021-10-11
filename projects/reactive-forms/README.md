@@ -25,13 +25,6 @@ Takes an `AbstractControl` and returns it as a `FormGroup`.
 const myFormGroup: FormGroup = ReactiveFormsHelpers.getAsFormGroup(control);
 ```
 
-### hasError(control: AbstractControl, error: string): boolean
-Checks if a control has a given error.
-
-### isRequired(control: AbstractControl): boolean
-Checks if a control is required. Alias for hasError(myControl, 'required'').
-
-
 ## Validators
 
 ### requiredIfMatchValidator(dependentControl: AbstractControl, matchValue: any): ValidatorFn
