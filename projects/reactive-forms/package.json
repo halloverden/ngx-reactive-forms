@@ -1,0 +1,36 @@
+{
+  "name": "@halloverden/ngx-reactive-forms",
+  "version": "1.0.0-rc.1",
+  "description": "A collection of helper methods and validators to help you when dealing with Angular reactive forms",
+  "keywords": [
+    "angular",
+    "reactive forms",
+    "ngx"
+  ],
+  "homepage": "https://github.com/halloverden/ngx-reactive-forms/tree/main/projects/reactive-forms#readme",
+  "bugs": {
+    "url": "https://github.com/halloverden/ngx-reactive-forms/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Andreas Larssen",
+    "email": "andreas@halloverden.no"
+  },
+  "contributors": [
+    {
+      "name": "Christopher Condrup",
+      "email": "christopher@halloverden.no"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/halloverden/ngx-reactive-forms/tree/main/projects/reactive-forms"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.2.0",
+    "@angular/core": "^12.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}
