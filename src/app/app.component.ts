@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       input1: ['', [Validators.required]],
-      input2: ['1', [Validators.required, Validators.minLength(12)]]
+      input2: ['']
     });
 
     this.input1 = this.form.get('input1') as FormControl;
