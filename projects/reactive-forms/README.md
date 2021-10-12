@@ -27,12 +27,20 @@ const myFormGroup: FormGroup = ReactiveFormsHelpers.getAsFormGroup(control);
 
 ## Validators
 
-### requiredIfMatchValidator(dependentControl: AbstractControl, matchValue: any): ValidatorFn
+### requiredIfMatchValidator(requiredControls: string[], matchValue: any): ValidatorFn
 
-Renders the FormControl required if the value of a `dependentControl` matches a given `matchValue`.
+Adds the required validator to the passed controllers (by name reference) if controller value w/ validator matches given value.
+> **_NOTE:_**  The requiredControls needs to be siblings to the control you put the validator on. This is a great PR opportunity if you're looking.
 
 ```typescript
-FormControl.setValidators([ReactiveFormsValidators.requiredIfMatchValidator(dependentControl, true)]);
+const myControl = new FormControl(null, [Validators.required]);
+
+const myFormGroup = new FormGroup({
+  myControl,
+  yourControl: new FormControl()
+});
+
+myControl.addValidators([ReactiveFormsValidators.requiredIfMatchValidator(['yourControl'], 'myValue')]);
 ```
 
 ## License
