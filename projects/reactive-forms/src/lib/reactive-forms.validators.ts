@@ -20,7 +20,7 @@ export class ReactiveFormsValidators {
           requiredControlInstance.removeValidators([Validators.required]);
           requiredControlInstance.updateValueAndValidity();
         }
-      })
+      });
 
       return null;
     });

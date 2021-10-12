@@ -30,7 +30,7 @@ const myFormGroup: FormGroup = ReactiveFormsHelpers.getAsFormGroup(control);
 ### requiredIfMatchValidator(requiredControls: string[], matchValue: any): ValidatorFn
 
 Adds the required validator to the passed controllers (by name reference) if controller value w/ validator matches given value.
-> **_NOTE:_**  The requiredControls needs to be siblings to the control you put the validator on.  
+> **_NOTE:_**  The requiredControls need to be siblings to the control you put the validator on.  
 > :trophy: This is a great PR opportunity if you're looking.
 
 ```typescript
