@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ReactiveFormsHelpers} from '../../projects/reactive-forms/src/lib/reactive-forms.helpers';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ReactiveFormsValidators} from '../../projects/reactive-forms/src/lib/reactive-forms.validators';
 
 @Component({
@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   input1!: AbstractControl|null;
   input2!: AbstractControl|null;
   form!: FormGroup;
+  form2!: FormGroup;
   formHelper = ReactiveFormsHelpers;
 
   /**
@@ -33,5 +34,26 @@ export class AppComponent implements OnInit {
 
     // Ctrl2 is required if ctrl1.value ==== '1'
     this.input1.addValidators([ReactiveFormsValidators.requiredIfMatchValidator(['input2'], '1')]);
+
+    this.form2 = this.formBuilder.group({
+      erich: new FormArray([
+        new FormControl(null),
+        new FormGroup({
+          test3: new FormControl('ewrd')
+        })
+      ], [Validators.required]),
+      test6: new FormControl('asfdsdf6'),
+      test: new FormGroup({
+        test2: new FormArray([
+          new FormControl('asfdsdf'),
+          new FormGroup({
+            test3: new FormControl('ewrd')
+          })
+        ], [Validators.required])
+      })
+    })
+
+    console.log((this.form2.get('erich') as FormArray).controls[0].hasValidator(Validators.required));
+    console.log((this.form2.get('erich') as FormArray).controls[0].errors);
   }
 }

@@ -11,9 +11,14 @@
 </form>
 
 <h2>Helpers</h2>
+<section>
+  <h3>getRequiredValue</h3>
+  <p>Only get required values:</p>
+  <p>Required values: {{formHelper.getRequiredValues(form2) | json}}</p>
+</section>
 <h2>Validators</h2>
 <section>
   <h3>requiredIfMatchValidator</h3>
-  <p>Input2 should be required if Input1 is '1'.</p>
+  <p>Input2 should be required if Input1 is '1':</p>
   <p>Input2 errors: {{input2?.errors | json}}</p>
 </section>

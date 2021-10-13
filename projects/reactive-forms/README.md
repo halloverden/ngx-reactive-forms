@@ -7,23 +7,25 @@ A collection of helper methods and validators to help you when dealing with [Ang
 ### getAsFormArray(control: AbstractControl): FormArray
 Takes an `AbstractControl` and returns it as a `FormArray`.
 
-```typescript
-const myFormArray: FormArray = ReactiveFormsHelpers.getAsFormArray(control);
-```
-
 ### getAsFormControl(control: AbstractControl): FormControl
 Takes an `AbstractControl` and returns it as a `FormControl`.
-
-```typescript
-const myFormControl: FormControl = ReactiveFormsHelpers.getAsFormControl(control);
-```
 
 ### getAsFormGroup(control: AbstractControl): FormGroup
 Takes an `AbstractControl` and returns it as a `FormGroup`.
 
-```typescript
-const myFormGroup: FormGroup = ReactiveFormsHelpers.getAsFormGroup(control);
-```
+### getRequiredValues(control: AbstractControl): object
+Returns an `object` containing only the values of the `FormControls` that are required.
+> **_NOTE:_**  The helper does only handle required FormControls, not FormGroups or FormArrays.
+
+### getFormControlName(control: AbstractControl): string
+Returns the name of the control. Throws error if control has no parent.
+> **_NOTE:_**  The control MUST have a parent.
+
+### hasRequiredChildren(control: FormGroup|FormArray): boolean
+Returns true if the passed `FormGroup` or `FormArray` has `FormControls` that are required.
+
+### isRequired(control: FormControl): boolean
+Alias for `myControl.hasValidator(Validators.required);`.
 
 ## Validators
 
