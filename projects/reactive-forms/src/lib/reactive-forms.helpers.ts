@@ -4,39 +4,42 @@ export class ReactiveFormsHelpers {
   /**
    * Return a given AbstractControl as FormControl.
    *
-   * @param {AbstractControl} ctrl
+   * @param {AbstractControl} control
    * @returns {FormControl}
    */
-  static getAsFormControl(ctrl: AbstractControl): FormControl {
-    return ctrl as FormControl;
+  static getAsFormControl(control: AbstractControl): FormControl {
+    return control as FormControl;
   }
 
   /**
    * Return given AbstractControl as FormArray.
    *
-   * @param {AbstractControl} ctrl
+   * @param {AbstractControl} control
    * @returns {FormArray}
    */
-  static getAsFormArray(ctrl: AbstractControl): FormArray {
-    return ctrl as FormArray;
+  static getAsFormArray(control: AbstractControl): FormArray {
+    return control as FormArray;
   }
 
   /**
    * Return given AbstractControl as FormGroup.
    *
-   * @param {AbstractControl} ctrl
+   * @param {AbstractControl} control
    * @returns {FormGroup}
    */
-  static getAsFormGroup(ctrl: AbstractControl): FormGroup {
-    return ctrl as FormGroup;
+  static getAsFormGroup(control: AbstractControl): FormGroup {
+    return control as FormGroup;
   }
 
   /**
+   * Returns the name of the control, if it has a parent.
    *
-   * @param ctrl
+   * @param {AbstractControl} control
+   * @throws Error
+   * @returns string
    */
-  static getFormControlName(ctrl: AbstractControl): string {
-    let parent = ctrl.parent;
+  static getFormControlName(control: AbstractControl): string {
+    let parent = control.parent;
     let name = '';
 
     if (!parent) {
@@ -44,7 +47,7 @@ export class ReactiveFormsHelpers {
     }
 
     Object.entries(parent.controls).forEach((entry: [string, AbstractControl]) => {
-      if (entry[1] === ctrl) {
+      if (entry[1] === control) {
         name = entry[0];
       }
     });
@@ -53,7 +56,10 @@ export class ReactiveFormsHelpers {
   }
 
   /**
+   * Returns an object as myForm.value would do, but only containing the values of the FormControls that has Validator.required.
    *
+   * @param {AbstractControl} control
+   * @returns object
    */
   static getRequiredValues(control: AbstractControl): object {
     let value: {[key: string]: any} = {};
@@ -90,7 +96,10 @@ export class ReactiveFormsHelpers {
   }
 
   /**
+   * Returns true if the passed FormGroup or FormArray has FormControls that are required.
    *
+   * @param {FormControl|FormArray} control
+   * @returns boolean
    */
   static hasRequiredChildren(control: FormGroup|FormArray): boolean {
     let hasRequiredChildren = false;
@@ -107,7 +116,10 @@ export class ReactiveFormsHelpers {
   }
 
   /**
+   * Alias for myControl.hasValidator(Validators.required).
    *
+   * @param {FormControl} control
+   * @returns boolean
    */
   static isRequired(control: FormControl): boolean {
     return control.hasValidator(Validators.required);
